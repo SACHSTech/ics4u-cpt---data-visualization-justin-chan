@@ -276,5 +276,77 @@ public class Main {
             System.out.println("Total Food Expenditure of " + sk.setContinentChoice() + ": $" + OCEFoodExpenditureSum);
             sc.close();
         }
+
+        YearFilter yf = new YearFilter();
+
+        System.out.print("Enter the year of which you would like to see the GDP and Food Expenditure totals (2015/2016): ");
+        yf.getYear(Integer.parseInt(keyboard.readLine()));
+
+        if(yf.setYear() == 2015) {
+
+            Scanner sc = new Scanner(file);
+
+            double gdpIn2015;
+            String gdpIn2015Data;
+            double foodin2015;
+            String[] the2015Data;
+            double gdpIn2015Sum = 0;
+            double foodin2015Sum = 0;
+            int whichYear;
+
+            sc.nextLine();
+
+            while(sc.hasNext()) {
+
+                gdpIn2015Data = sc.nextLine();
+                the2015Data = gdpIn2015Data.split(",");
+                whichYear = Integer.parseInt(the2015Data[2]);
+
+                if(whichYear == 2015) {
+
+                    gdpIn2015 = Double.parseDouble(the2015Data[5]);
+                    gdpIn2015Sum = gdpIn2015Sum + gdpIn2015;
+                    foodin2015 = Double.parseDouble(the2015Data[6]);
+                    foodin2015Sum = foodin2015Sum + foodin2015;
+
+                }
+            }
+            System.out.println("Total GDP in " + yf.setYear() + ": $" + gdpIn2015Sum);
+            System.out.println("Total Food Expenditure in " + yf.setYear() + ": $" + foodin2015Sum);
+            sc.close();
+        }else if(yf.setYear() == 2016) {
+
+            Scanner sc = new Scanner(file);
+
+            double gdpIn2016;
+            double foodin2016;
+            String gdpIn2016Data;
+            String[] the2016Data;
+            double gdpIn2016Sum = 0;
+            double foodin2016Sum = 0;
+            int whichYear;
+
+            sc.nextLine();
+
+            while(sc.hasNext()) {
+
+                gdpIn2016Data = sc.nextLine();
+                the2016Data = gdpIn2016Data.split(",");
+                whichYear = Integer.parseInt(the2016Data[2]);
+
+                if(whichYear == 2016) {
+
+                    gdpIn2016 = Double.parseDouble(the2016Data[5]);
+                    gdpIn2016Sum = gdpIn2016Sum + gdpIn2016;
+                    foodin2016 = Double.parseDouble(the2016Data[6]);
+                    foodin2016Sum = foodin2016Sum + foodin2016;
+                    
+                }
+            }
+            System.out.println("Total GDP in " + yf.setYear() + ": $" + gdpIn2016Sum);
+            System.out.println("Total Food Expenditure in " + yf.setYear() + ": $" + foodin2016Sum);
+            sc.close();
+        } 
+
     }
 }
