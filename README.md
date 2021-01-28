@@ -1,12 +1,6 @@
 
 # ICS4U - CPT: Data Interaction and Visualization
 
-Edit this page to include:
-* A description of the data set you are using
-* A link to your source for the data set.
-* Why you selected this data set for this project.
-* Embedded or link to your Demo Video
-
 ## Description
 The data set that I'm using is a comparison of the GDP per capitas and food expenditure per person of a selected amount of countries in 2015 and 2016. There is some extra information about population and country code, but that is not the main comparison that I focused on.
 
