@@ -2,54 +2,80 @@ package basic;
 
 import java.io.*;
 import java.io.IOException;
-import java.io.FileReader;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Scanner;
+import java.io.FileNotFoundException;
 
 public class CSVReading {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, FileNotFoundException {
 
         String filePath;
-        filePath = "C:/Users/justi/OneDrive/Desktop/ics4uSTUFF/mainCPT/annual-food-expenditure-per-person-vs-gdp-per-capita_2.csv";
+        filePath = "C:/Users/justi/OneDrive/Desktop/ics4uSTUFF/mainCPT/ics4u-cpt---data-visualization-justin-chan/src/basic/annual-food-expenditure-per-person-vs-gdp-per-capita_2.csv";
+        File file = new File(filePath);
         
-        BufferedReader br = new BufferedReader(new FileReader(filePath));
         BufferedReader keyboard = new BufferedReader(new InputStreamReader(System.in));        
 
-        String data = br.readLine();
+        SpecifiedValues sv = new SpecifiedValues();
 
-        String countryChoice = "";
+        System.out.print("Would you like to sort by GDP or food expenditure? (y/n): ");
+        sv.getGDPExpenditureChoice(keyboard.readLine());
 
-        System.out.print("Enter which country you want to see the record of: " + countryChoice);
-        countryChoice = keyboard.readLine();
+        if(sv.setGDPExpenditureChoice().equalsIgnoreCase("y")) {
 
-        if(countryChoice.equalsIgnoreCase("india")) {
+            System.out.print("GDP or Food Expenditure (GDP/food) (lowest to highest)?: ");
+            sv.getGDPFoodChoice(keyboard.readLine());
 
-            boolean printedCountry = false;
-            
-            while(data != null && printedCountry == false) {
-                String line = br.readLine();
-                String[] values = line.split(",");
-                System.out.println("Country: " + values[0]);
-                System.out.println("Year: " + values[2]);
-                System.out.println("Total Population: " + values[3]);
-                System.out.println("GDP per capita (current US$): " + values[5]);
-                System.out.println("Food expenditure per person: " + values[6]);
-                printedCountry = true;
-            }
+            if(sv.setGDPFoodChoice().equalsIgnoreCase("gdp")) {
 
-        }else if(countryChoice.equalsIgnoreCase("uzbekistan")) {
+                Scanner sc = new Scanner(file);
 
-            boolean printedCountry = false;
-            
-            while(data != null && printedCountry == false) {
-                String line = br.readLine();
-                line = br.readLine();
-                String[] values = line.split(",");
-                System.out.println("Country: " + values[0]);
-                System.out.println("Year: " + values[2]);
-                System.out.println("Total Population: " + values[3]);
-                System.out.println("GDP per capita (current US$): " + values[5]);
-                System.out.println("Food expenditure per person: " + values[6]);
+                String data2 = "";
+                String values[] = {};
+                double allGDP;
+
+                sc.nextLine();
+
+                ArrayList<Double> gdpArray = new ArrayList<>();
+
+                for(int i = 0; i < 84; i++) {
+                    
+                    data2 = sc.nextLine();
+                    values = data2.split(",");
+                    allGDP = Double.parseDouble(values[5]);
+                    gdpArray.add(allGDP);
+
+                }
+                double gdpArray2[] = new double[gdpArray.size()];
+                sv.mergeSort(gdpArray2);
+                System.out.println("These are the GDPs sorted: " + Arrays.toString(gdpArray2));
+                sc.close();
+            }else if(sv.setGDPFoodChoice().equalsIgnoreCase("food")) {
+
+                Scanner sc = new Scanner(file);
+
+                String data3 = "";
+                String values2[] = {};
+                double allFoodExpenditure;
+
+                sc.nextLine();
+
+                ArrayList<Double> foodExpenditureArray = new ArrayList<>();
+
+                for(int i = 0; i < 84; i++) {
+                    
+                    data3 = sc.nextLine();
+                    values2 = data3.split(",");
+                    allFoodExpenditure = Double.parseDouble(values2[6]);
+                    foodExpenditureArray.add(allFoodExpenditure);
+
+                }
+                double foodExpenditureArray2[] = new double[foodExpenditureArray.size()];
+                sv.mergeSort(foodExpenditureArray2);
+                System.out.println("These are the GDPs sorted: " + Arrays.toString(foodExpenditureArray2));
+                sc.close();
+
             }
         }
-        br.close();
     }
 }
