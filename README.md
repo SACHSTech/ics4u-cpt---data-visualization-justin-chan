@@ -7,5 +7,13 @@ Edit this page to include:
 * Why you selected this data set for this project.
 * Embedded or link to your Demo Video
 
+## Description
+The data set that I'm using is a comparison of the GDP per capitas and food expenditure per person of a selected amount of countries in 2015 and 2016. There is some extra information about population and country code, but that is not the main comparison that I focused on.
 
-Check the [VS Code, Java, and JavaFX Install and Set Up](https://docs.google.com/document/d/1s5oTmY8A8TDZu303p_DaH6CEAcC9xL8-aNX-pAxCcps/edit?usp=sharing) doc for set up and getting started instructions.
+Source: https://ourworldindata.org/grapher/annual-food-expenditure-per-person-vs-gdp-per-capita
+
+## Reason for Selection
+The reason that I selected this data set is because I like food, but I don't think I understand too many of the consequences of eating at restaurants or fast food too much, so seeing the information about how much money people spend on food is interesting. This data is not necessarily the food specifically spent at restaurants or fast food, but it still gives me a small idea of what it might be like in the future when I have to manage food expenses on my own.
+
+## Video Link
+
