@@ -5,38 +5,38 @@ public class SpecifiedValues {
     private String gdpOrExpenditure;
     private String gdpOrFood;
 
-    public void getGDPExpenditureChoice(String q1Choice) {
+    public void setGDPExpenditureChoice(String q1Choice) {
 
         gdpOrExpenditure = q1Choice;
 
     }
 
-    public String setGDPExpenditureChoice() {
+    public String getGDPExpenditureChoice() {
 
         return gdpOrExpenditure;
 
     }
 
-    public void getGDPFoodChoice(String q2Choice) {
+    public void setGDPFoodChoice(String q2Choice) {
 
         gdpOrFood = q2Choice;
 
     }
 
-    public String setGDPFoodChoice() {
+    public String getGDPFoodChoice() {
 
         return gdpOrFood;
 
     }
    
-    public void mergeSort(double[] arr) {
+    public void mergeSort(Integer[] arr) {
 
-        double[] temp = new double[arr.length];
+        int[] temp = new int[arr.length];
         mergeSortHelper(arr, 0, arr.length - 1, temp);
 
     }
   
-    private static void mergeSortHelper(double[] arr, int from, int to, double[] temp) {
+    private static void mergeSortHelper(Integer[] arr, int from, int to, int[] temp) {
 
        // If the array length is greater than 1
         if(to - from >= 1) {
@@ -49,7 +49,7 @@ public class SpecifiedValues {
         }
     }
   
-    private static void merge(double[] arr, int from, int mid, int to, double[] temp) {
+    private static void merge(Integer[] arr, int from, int mid, int to, int[] temp) {
 
         int i = from;       // track left array position
         int j = mid + 1;    // track right array position
