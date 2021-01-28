@@ -351,23 +351,11 @@ public class Main {
         IndivRecord ir = new IndivRecord();
 
         ir.countryList();
-        System.out.println("Which country would you like to view the individual record of? (only 2015, list above): ");
 
+        System.out.println("Which country would you like to view the individual record of? (only 2015, list above): ");
         ir.getCountryChoice(keyboard.readLine());
 
-        if(ir.setCountryChoice().equalsIgnoreCase("india")) {
-
-            ir.IndiaDetails();
-
-        }else if(ir.setCountryChoice().equalsIgnoreCase("uzbekistan")) {
-
-            ir.UzbekistanDetails();
-
-        }else if(ir.setCountryChoice().equalsIgnoreCase("cameroon")) {
-
-            ir.CameroonDetails();
-
-        }
-
+        ir.countryIfs();
+        
     }
 }
