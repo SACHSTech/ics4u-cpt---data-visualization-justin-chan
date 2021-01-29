@@ -32,23 +32,24 @@ public class Main {
 
                 String data2 = "";
                 String values[] = {};
-                int allGDP;
+                double allGDP;
 
                 sc.nextLine();
 
-                ArrayList<Integer> gdpArray = new ArrayList<>();
+                ArrayList<Double> gdpArray = new ArrayList<>();
 
                 for(int i = 0; i < 84; i++) {
                     
                     data2 = sc.nextLine();
                     values = data2.split(",");
-                    allGDP = Integer.parseInt(values[5]);
+                    allGDP = Double.parseDouble(values[5]);
                     gdpArray.add(allGDP);
 
                 }
-                Integer gdpArray2[] = new Integer[gdpArray.size()];
-                sv.mergeSort(gdpArray2);
-                System.out.println("These are the GDPs sorted: " + gdpArray2);
+                Double[] gdpArray2 = new Double[gdpArray.size()];
+                gdpArray2 = gdpArray.toArray(gdpArray2);
+                sv.mergeSortDouble(gdpArray2);
+                System.out.println("These are the GDPs sorted: " + Arrays.toString(gdpArray2));
                 sc.close();
             } else if(sv.getGDPFoodChoice().equalsIgnoreCase("food")) {
 
@@ -72,7 +73,7 @@ public class Main {
                 }
                 Integer[] foodExpenditureArray2 = new Integer[foodExpenditureArray.size()];
                 foodExpenditureArray2 = foodExpenditureArray.toArray(foodExpenditureArray2);
-                sv.mergeSort(foodExpenditureArray2);
+                sv.mergeSortInt(foodExpenditureArray2);
                 System.out.println("These are the food expenditures sorted: " + Arrays.toString(foodExpenditureArray2));
                 sc.close();
             }
@@ -84,12 +85,15 @@ public class Main {
 
         sk.setContinentChoice(keyboard.readLine());
 
+        // filter by continent
         sk.continentDetails();
 
         YearFilter yf = new YearFilter();
 
         System.out.print("Enter the year of which you would like to see the GDP and Food Expenditure totals (2015/2016): ");
         yf.setYear(Integer.parseInt(keyboard.readLine()));
+
+        // sort by year
 
         if(yf.getYear() == 2015) {
 
@@ -111,7 +115,7 @@ public class Main {
                 the2015Data = gdpIn2015Data.split(",");
                 whichYear = Integer.parseInt(the2015Data[2]);
 
-                if(whichYear == 2015) {
+                if(whichYear == yf.getYear()) {
 
                     gdpIn2015 = Double.parseDouble(the2015Data[5]);
                     gdpIn2015Sum = gdpIn2015Sum + gdpIn2015;
@@ -120,6 +124,7 @@ public class Main {
 
                 }
             }
+            // summary of 2015
             System.out.println("Total GDP in " + yf.getYear() + ": $" + gdpIn2015Sum);
             System.out.println("Total Food Expenditure in " + yf.getYear() + ": $" + foodin2015Sum);
             sc.close();
@@ -143,7 +148,7 @@ public class Main {
                 the2016Data = gdpIn2016Data.split(",");
                 whichYear = Integer.parseInt(the2016Data[2]);
 
-                if(whichYear == 2016) {
+                if(whichYear == yf.getYear()) {
 
                     gdpIn2016 = Double.parseDouble(the2016Data[5]);
                     gdpIn2016Sum = gdpIn2016Sum + gdpIn2016;
@@ -152,6 +157,7 @@ public class Main {
 
                 }
             }
+            // summary of 2016
             System.out.println("Total GDP in " + yf.getYear() + ": $" + gdpIn2016Sum);
             System.out.println("Total Food Expenditure in " + yf.getYear() + ": $" + foodin2016Sum);
             sc.close();
@@ -164,6 +170,7 @@ public class Main {
         System.out.println("Which country would you like to view the individual record of? (only 2015, list above): ");
         ir.setCountryChoice(keyboard.readLine());
 
+        // individual record
         ir.countryDetails();
         
     }

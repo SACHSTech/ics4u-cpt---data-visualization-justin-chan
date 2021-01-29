@@ -6,7 +6,12 @@ import java.io.IOException;
 
 public class IndivRecord {
 
-    String country;
+    private String country;
+
+    /**
+     * 
+     * @param whichCountry  the country that they want to view the data for
+     */
 
     public void setCountryChoice(String whichCountry) {
 
@@ -14,11 +19,21 @@ public class IndivRecord {
 
     }
 
+    /**
+     * 
+     * @return 
+     */
+
     public String getCountryChoice() {
 
         return country;
 
     }
+
+    /**
+     * 
+     * @throws IOException   if there is an error with the user's input
+     */
 
     public void countryList() throws IOException {
 
@@ -37,6 +52,11 @@ public class IndivRecord {
         }
         br.close();
     }
+
+    /**
+     * 
+     * @throws IOException  if there is an error with the user's input
+     */
 
     public void countryDetails() throws IOException {
 
@@ -61,7 +81,12 @@ public class IndivRecord {
         }
         br.close(); 
     }
-    
+
+    /**
+     * 
+     * @param countryPrinting   takes the String array that is read from the .csv file
+     */
+
     public void countryPrints(String[] countryPrinting) {
 
         System.out.println("Country: " + countryPrinting[0]);

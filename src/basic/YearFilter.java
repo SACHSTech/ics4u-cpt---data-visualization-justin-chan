@@ -2,8 +2,7 @@ package basic;
 
 public class YearFilter {
     
-    int yearChoice;
-
+    private int yearChoice;
 
     public void setYear(int whichYear) {
 
