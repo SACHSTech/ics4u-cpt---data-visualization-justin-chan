@@ -46,6 +46,7 @@ public class Main {
                     gdpArray.add(allGDP);
 
                 }
+                //sort by gdp
                 Double[] gdpArray2 = new Double[gdpArray.size()];
                 gdpArray2 = gdpArray.toArray(gdpArray2);
                 sv.mergeSortDouble(gdpArray2);
@@ -71,6 +72,7 @@ public class Main {
                     foodExpenditureArray.add(allFoodExpenditure);
 
                 }
+                // sort by food expenditure
                 Integer[] foodExpenditureArray2 = new Integer[foodExpenditureArray.size()];
                 foodExpenditureArray2 = foodExpenditureArray.toArray(foodExpenditureArray2);
                 sv.mergeSortInt(foodExpenditureArray2);
@@ -85,7 +87,7 @@ public class Main {
 
         sk.setContinentChoice(keyboard.readLine());
 
-        // filter by continent
+        // selected key
         sk.continentDetails();
 
         YearFilter yf = new YearFilter();
@@ -93,7 +95,7 @@ public class Main {
         System.out.print("Enter the year of which you would like to see the GDP and Food Expenditure totals (2015/2016): ");
         yf.setYear(Integer.parseInt(keyboard.readLine()));
 
-        // sort by year
+        // filter by year
 
         if(yf.getYear() == 2015) {
 
@@ -172,6 +174,30 @@ public class Main {
 
         // individual record
         ir.countryDetails();
-        
+
+        SearchFood sf = new SearchFood();
+
+        System.out.println("Search to check if a certain food expenditure is in the data by entering the amount you would like to search for: ");
+        sf.setExpenditureAmount(Integer.parseInt(keyboard.readLine()));
+
+        String filePath2 = "C:/Users/justi/OneDrive/Desktop/ics4uSTUFF/mainCPT/ics4u-cpt---data-visualization-justin-chan/src/basic/annual-food-expenditure-per-person-vs-gdp-per-capita_2.csv";
+        BufferedReader br = new BufferedReader(new FileReader(filePath2));
+
+        String line = "";
+        ArrayList<Integer> toBeSearched = new ArrayList<Integer>();
+
+        br.readLine();
+
+        while((line = br.readLine()) != null ) {
+
+            String[] allFoodExpenditures = line.split(",");
+            int searchedFood = Integer.parseInt(allFoodExpenditures[6]);
+            toBeSearched.add(searchedFood);
+
+        }
+        Integer[] toBeSearched2 = new Integer[toBeSearched.size()];
+        toBeSearched2 = toBeSearched.toArray(toBeSearched2);
+        sf.binarySearch(toBeSearched2, sf.getExpenditureAmount());
+        br.close();
     }
 }
