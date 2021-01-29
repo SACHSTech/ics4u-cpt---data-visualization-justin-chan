@@ -1,6 +1,7 @@
 /* ....Show License.... */
 package charts;
  
+ 
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -24,24 +25,36 @@ public class BarChartApp extends Application {
     private NumberAxis yAxis;
  
     public Parent createContent() {
-        String[] years = {"2007", "2008", "2009"};
+        String[] years = {"2015", "2016"};
         xAxis = new CategoryAxis();
         xAxis.setCategories(FXCollections.<String>observableArrayList(years));
-        yAxis = new NumberAxis("Units Sold", 0.0d, 3000.0d, 1000.0d);
+        yAxis = new NumberAxis("Food Expenditure (US$)", 0.0d, 70000.0d, 15000.0d);
         ObservableList<BarChart.Series> barChartData =
             FXCollections.observableArrayList(
-              new BarChart.Series("Apples", FXCollections.observableArrayList(
-                new BarChart.Data(years[0], 567d),
-                new BarChart.Data(years[1], 1292d),
-                new BarChart.Data(years[2], 1292d))),
-              new BarChart.Series("Lemons", FXCollections.observableArrayList(
-                new BarChart.Data(years[0], 956),
-                new BarChart.Data(years[1], 1665),
-                new BarChart.Data(years[2], 2559))),
-              new BarChart.Series("Oranges", FXCollections.observableArrayList(
-                new BarChart.Data(years[0], 1154),
-                new BarChart.Data(years[1], 1927),
-                new BarChart.Data(years[2], 2774)))
+                new BarChart.Series("Africa",
+                                    FXCollections.observableArrayList(
+                    new BarChart.Data(years[0], 5935d),
+                    new BarChart.Data(years[1], 5610d))),
+                new BarChart.Series("South America",
+                                    FXCollections.observableArrayList(
+                    new BarChart.Data(years[0], 9435d),
+                    new BarChart.Data(years[1], 9744d))),
+                new BarChart.Series("Oceania",
+                                    FXCollections.observableArrayList(
+                    new BarChart.Data(years[0], 6103d),
+                    new BarChart.Data(years[1], 6076d))),
+                new BarChart.Series("North America",
+                                    FXCollections.observableArrayList(  
+                    new BarChart.Data(years[0], 10028d),
+                    new BarChart.Data(years[1], 10844d))),
+                new BarChart.Series("Asia",
+                                    FXCollections.observableArrayList(
+                    new BarChart.Data(years[0], 37940d),
+                    new BarChart.Data(years[1], 33990d))),
+                new BarChart.Series("Europe",
+                                    FXCollections.observableArrayList(
+                    new BarChart.Data(years[0], 65294d),
+                    new BarChart.Data(years[1], 69419d)))
             );
         chart = new BarChart(xAxis, yAxis, barChartData, 25.0d);
         return chart;
@@ -49,6 +62,7 @@ public class BarChartApp extends Application {
  
     @Override public void start(Stage primaryStage) throws Exception {
         primaryStage.setScene(new Scene(createContent()));
+        primaryStage.setTitle("Food Expenditure in Continents by Year");
         primaryStage.show();
     }
  
